@@ -1,4 +1,4 @@
-from Datasets import load_dataset
+from datasets import load_dataset
 import argparse
 
 def parse_args():
