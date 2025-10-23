@@ -7,7 +7,7 @@ import torch
 dataset = load_from_disk("data/refined_Berkesule_translated_mmiq_dataset_with_question_train.parquet")
 
 # train split'ten ilk örneği al
-example = dataset["train"][0]
+example = dataset[0]
 
 # Görseli doğrudan al (PIL Image)
 image = example["image"]
@@ -50,7 +50,7 @@ inputs = inputs.to(model.device)
 
 # 🔹 5. Text generate et
 
-generated_ids = model.generate(**inputs, max_new_tokens=128)
+generated_ids = model.generate(**inputs, max_new_tokens=40960, temperature=1.0, top_p=0.95, repetition_penalty=1.0, presence_penalty=0.0, use_cache=True, top_k=20)
 generated_ids_trimmed = [
     out_ids[len(in_ids) :] for in_ids, out_ids in zip(inputs.input_ids, generated_ids)
 ]
