@@ -1,10 +1,10 @@
-from datasets import load_dataset
+from datasets import load_dataset, load_from_disk
 from transformers import AutoProcessor, AutoModelForVision2Seq
 from PIL import Image
 import torch
 
 # 🔹 1. Dataset'i yükle
-dataset = load_dataset("data/refined_Berkesule_translated_mmiq_dataset_with_question_train.parquet")
+dataset = load_from_disk("data/refined_Berkesule_translated_mmiq_dataset_with_question_train.parquet")
 
 # train split'ten ilk örneği al
 example = dataset["train"][0]
